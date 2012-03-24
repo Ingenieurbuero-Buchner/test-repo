@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+<!--
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+          LEEIIO01       CHAOS0      MADE!    00000000             00001    10000    0000              
+           000 1001     000  000      000     0  001 0              000      00001  0000               
+           000  000     000  000      000        00                 001      10000  0000               
+           000  000     000  100      000        00                 000      10 0000 100               
+           000  000     000  000      000        001                000      10 1001 100               
+           000  00      100  001      000        001       001      000      00  00  000               
+          F000100        U00001      C0001      K0001      000     G0001    F001     W00!              
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Doit.im| Online Time and Task Management System, Always Online, Always With You!</title>
+<meta name="keywords" content="GTD,time manage,task manage,GTD software,GTD Android,GTD iPhone,GTD iPad,GTD Windows,GTD Mac" />
+<meta name="description" content="Doit.im is a Cross-platform task management tool, which can sync with Phones. Under the guidance of excellent task management principles, Doit.im sort your mind out, to get rid of various pending ideas, and helps you organize tasks and focus on items in hand, so that you can closely track your work and feel easy when faced with bulks of complicated projects. With no pressure but efficiency, you’ll further enjoy your work and get unexpected success." />
+<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1" />
+<link rel="Shortcut Icon" href="/public/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/public/css/v3/style.css?1331436586000" />
+</head>
+
+<body unselectable="on" class="windows">
+<div id="loading-wrap" class="loading-wrap font-family">
+    <div id="loading_header">
+        <div class="header-wrap">
+            <div class="header-bottom">
+            </div>
+        </div>
+    </div>
+    <div class="inner">
+        <div class="inner-body"><img width="32" height="32" src="/public/imgs/v3/i/loading_img.gif" /><div id="loading_words">Loading...</div></div>
+    </div>
+</div>
+<div id="header">
+    <div class="header-top">
+        <div class="header-link">
+        </div>
+        <div class="logo" id="logo_orig" style="display:none">Doit.im</div>
+        <div class="logo2" id="logo" title="Doit.im v3.5.6 build 20120309">Doit.im</div>
+    </div>
+    <div class="header-wrap">
+        <div class="header-control">
+            <div class="add">
+                <a data-id="addtask" class="addtask btn" title="Add Task"><span>Add Task</span></a>
+                <a data-id="addnote" class="addnote btn hidden"><span>New note</span></a>
+            </div>
+            <div class="control">
+                <a data-id="back" class="back btn"><span>Go back</span></a>
+                <a data-id="toproject" title="Convert to project" class="toproject btn disabled"><span>Convert to project</span></a>
+                <a data-id="edit" title="Edit" class="edit btn disabled"><span>Edit task</span></a>
+                <a data-id="delete" title="Delete" class="delete btn disabled"><span>Delete task</span></a>
+                <a data-id="archive" title="Archive" class="archive btn"><span>Archive</span></a>
+                <a data-id="trash" title="Empty" class="trash btn"><span>Trash</span></a>
+                <a data-id="putback" title="Put Back" class="putback btn disabled"><span>Put back</span></a>
+                <a data-id="active" title="Active" class="active btn disabled hidden"><span>Active</span></a>
+                <a data-id="inactive" title="Inactive" class="inactive btn disabled hidden"><span>Inctive</span></a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div id="user_info_setting" class="setting user-info-box">
+                <div class="user-info-icon">
+                    <img src="/public/imgs/v3/i/avatar.png" />
+                </div>
+                
+            </div>
+            <div id="user_info_msg" class="message">
+                <div class="user-info-icon">
+                    <div id="user_info_msg_count" style="display:none">0</div>
+                </div>
+                <div id="user_info_msg_box">
+                    <div id='no_msg' style="display:none">No Message Now.</div>
+                    <dl></dl>
+                    <div id="user_info_msg_box_ft">
+                        <div id="msg_box_select_all" class="btn-small">Select all</div>
+                        <div id="msg_box_select_op" class="btn-small">Deselect</div>
+                        <div id="msg_box_mark_read" class="btn-small">Mark as read</div>
+                        <div id="msg_box_delete" class="btn-small">Delete</div>
+                    </div>
+                    <div class="allow"></div>
+                </div>
+            </div>
+            <div class="search" id="top_search">
+                <form class="search-form">
+                    <div class="search-type" data-id="current">Current</div>
+                    <input type="text" x-webkit-speech onwebkitspeechchange="$(this).closest('form').submit()" class="search-input" value="" placeholder="Search tasks..." />
+                </form>
+                <a href="#" class="advance">Advanced</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wrapper">
+    <div id="sidebar" class="sidebar">
+        
+<div class="in">
+</div><!--in-->
+<div class="fixed">
+    <div class="box-toolbar">
+        <div class="wrap">
+            <a class="btn sync" href="javascript:;"><span class="icon">Refresh</span></a>
+            <a class="btn add" href="javascript:;"><span class="icon">Add</span></a>
+            <a class="btn contact" href="javascript:;"><span class="icon">Contact</span></a>
+        </div>
+    </div>
+</div>    </div>
+    <div id="main">
+        <div id="content">
+            <div id="task_paper" class="task-paper">
+                <div id="switchbar" style="display:none">
+                    <div class="switch-calendar-view">
+                        <div class="icon list s"></div>
+                        <div class="icon calendar"></div>
+                    </div>
+                    <div class="switch-completed-view">
+                        <ul id="archiver_menu" style="display:none">
+                            <li id="weekly" class="s"><span class="tit">Weekly</span></li>
+                            <li id="monthly" ><span class="tit">Monthly</span></li>
+                        </ul>
+                        <div class="icontab">
+                            <div class="icon completed s"></div>
+                            <div class="icon archiver"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="toolbar" style="display:none">
+                    <div id="groupby">
+                        <h3>Group by:&nbsp;<a href="javascript:void(0)">Default
+                        <span></span></a></h3>
+                    </div><!--groupby-->
+                    <div id="paper_title">
+                        <div class="in">
+                            <span class="paper-date"></span>
+                        </div><!--in-->
+                    </div>
+                    <div class="paper-tab">
+                        <div class="in">
+                        </div><!--in-->
+                    </div><!--paper tab-->
+                </div>
+                <div id="calendar_view"></div>
+                <div id="task_quick_add">
+                    <ul>
+                        <li class="task quick">
+                        <input id="quick_add_input" x-webkit-speech name="quick_add_input" type="text" class="task-quick-add" value="" placeholder="Tap to add, return to continue." />
+                        <div class="help">?</div>
+                        <div class="help-div">
+                            <h6>Smart Add Shortcuts</h6>
+                            <ul>
+                                <li><strong>#</strong>Project</li>
+                                <li><strong>@</strong>Context</li>
+                                <li><strong>&</strong>Tag</li>
+                                <li><strong>!</strong>Priority</li>
+                                <li><strong>^</strong>Start at</li>
+                            </ul>
+                        </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="task_container" style="display:none">
+                    <div id="search_result">Search Results for "<span class="keyword">XXX</span>"</div>
+                    <div class="archiver-tool">
+                        <div class="bd">
+                            <ul id="group_weekly">
+                                <li class="control prev"><span>&lt;Prev</span></li>
+                                <li class="type"><input type="text" class="text-time groupby-week" value="" readonly="readonly" /></li>
+                                <li class="control next"><span>Next&gt;</span></li>
+                            </ul>
+                            <ul id="group_monthly">
+                                <li class="control prev"><span>&lt;Prev</span></li>
+                                <li class="type"><input type="text" class="text-time groupby-month" value="" readonly="readonly" /></li>
+                                <li class="control next"><span>Next&gt;</span></li>
+                            </ul>
+                        </div><!--bd-->
+                    </div><!---->
+                    <div id="task_group">
+                        <div id="groupby_none">
+                            <ul id="taskList" class="taskList">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="loading-more"></div>
+                </div>
+            </div><!--task paper content-->
+
+        </div>
+        <div id="sidebar_right" class="sidebar" style="display:none">
+            <div id="contact_view">
+                <div class="mod bd more">
+                    <ul>
+                        <li class="mod" id="contact_all">
+                        <h3 class="contact-title side-title"><i class="i-toggle closed"></i><span>All Contacts</span></h3>
+                            <ul class="contact-list"></ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="add_contact_pop">
+		<div class="pbd">
+			<div class="ptit">
+				<span class="btn-close"></span>
+			</div><!--tit-->
+			<div class="pin">
+				<input type="text" id="contact_mail" placeholder="Email address" name="" />
+			</div><!--pin-->
+			<div class="pft">
+				<span class="btn-add">Add</span>
+			</div><!--ft-->
+		</div><!--bd-->
+		<span class="icon-triangel"></span>
+	</div><!--add contact pop-->
+
+	<div class="tip-box contact-detail-popup">
+		<div class="tip-box-bd">
+			<dl class="clearfix">
+				<dt>Nickname</dt>
+				<dd><input id="edit_contact_name" name="edit_contact_name" type="text" class="text" maxlength="30" /></dd>
+				<dt>Email</dt>
+				<dd><input id="edit_contact_email" name="edit_contact_email" type="text" class="text readonly" readonly /></dd>
+				<dt>Phone</dt>
+				<dd><input id="edit_contact_cell" name="edit_contact_cell" type="text" class="text" maxlength="11" /></dd>
+				<dt>Birthday</dt>
+				<dd>
+					<div id="years_list" class="select-box">
+						<div class="selected-text">1985</div>
+						<ul>
+							<li>1970</li>
+							<li>1971</li>
+							<li>1972</li>
+							<li>1973</li>
+							<li>1974</li>
+							<li>1975</li>
+							<li>1976</li>
+							<li>1977</li>
+							<li>1978</li>
+							<li>1979</li>
+							<li>1980</li>
+							<li>1981</li>
+							<li>1982</li>
+							<li>1983</li>
+							<li>1984</li>
+							<li>1985</li>
+							<li>1986</li>
+							<li>1987</li>
+							<li>1988</li>
+							<li>1989</li>
+							<li>1990</li>
+							<li>1991</li>
+							<li>1992</li>
+							<li>1993</li>
+							<li>1994</li>
+							<li>1995</li>
+							<li>1996</li>
+							<li>1997</li>
+							<li>1998</li>
+							<li>1999</li>
+							<li>2000</li>
+						</ul>
+					</div>
+					<div id="months_list" class="select-box">
+						<div class="selected-text">02</div>
+						<ul>
+							<li>01</li>
+							<li>02</li>
+							<li>03</li>
+							<li>04</li>
+							<li>05</li>
+							<li>06</li>
+							<li>07</li>
+							<li>08</li>
+							<li>09</li>
+							<li>10</li>
+							<li>11</li>
+							<li>12</li>
+						</ul>
+					</div>
+					<div id="days_list" class="select-box">
+						<div class="selected-text">14</div>
+						<ul>
+							<li>01</li>
+							<li>02</li>
+							<li>03</li>
+							<li>04</li>
+							<li>05</li>
+							<li>06</li>
+							<li>07</li>
+							<li>08</li>
+							<li>09</li>
+							<li>10</li>
+							<li>11</li>
+							<li>12</li>
+							<li>13</li>
+							<li>14</li>
+							<li>15</li>
+							<li>16</li>
+							<li>17</li>
+							<li>18</li>
+							<li>19</li>
+							<li>20</li>
+							<li>21</li>
+							<li>22</li>
+							<li>23</li>
+							<li>24</li>
+							<li>25</li>
+							<li>26</li>
+							<li>27</li>
+							<li>28</li>
+							<li>29</li>
+							<li>30</li>
+							<li>31</li>
+						</ul>
+					</div>
+				</dd>
+				<dt>Description</dt>
+				<dd><textarea id="edit_contact_memo" class="text" name="edit_contact_memo"></textarea></dd>
+			</dl>
+		</div>
+		<div class="tip-box-ft">
+			<div class="btn-small" id="edit_contact_save">Save</div>
+			<div class="btn-small" id="edit_contact_cancel">Cancel</div>
+		</div>
+	</div>
+</div>
+
+        <div class="fixed">
+            <div class="box-toolbar">
+                <div class="wrap">
+                    <a class="btn add" href="javascript:;"><span class="icon">Add</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div id="setting_content" style="display:none"></div>
+</div>
+<div id="footer" style="display:none">
+    <div class="in">
+        <p class="link">
+        </p>
+        <p class="copyright">©2011 Snoworange Inc. All Rights Reserved.</p>
+    </div>
+</div>
+<div id="view_templates" style="display:none">
+    <!--Template for adding context popup box-->
+    <div id="view_template_context">
+        <label class="oneline">Context name:</label>
+        <input value="" class="text popbox-context-input" />
+    </div>
+
+    <!--Template for adding contact popup box-->
+    <div id="view_template_contact">
+        <label class="oneline">His/her email address:</label>
+        <input value="" class="text popbox-contact-input" />
+    </div>
+
+    <!--Template for adding contact group popup box-->
+    <div id="view_template_contactgroup">
+        <label class="oneline">Group name:</label>
+        <input value="" class="text popbox-contactgroup-input" />
+    </div>
+
+    <!--Template for groupby sweetip-->
+    <div id="view_template_groupby">
+        <div class="groupby-pop">
+            <ul class="sweetip-list checkmark">
+                <li><a rel="default" href="javascript:void(0)">Default</a></li>
+                <li><a rel="context" href="javascript:void(0)">Context</a></li>
+                <li><a rel="project" href="javascript:void(0)">Project</a></li>
+                <li><a rel="scheduled" href="javascript:void(0)">Start time</a></li>
+                <li><a rel="deadline" href="javascript:void(0)">Deadline</a></li>
+                <li><a rel="priority" href="javascript:void(0)">Priority</a></li>
+            </ul>
+        </div><!--groupby pop-->
+    </div>
+
+    <!--Template for control the contact-->
+    <div id="view_template_contact_edit">
+        <ul class="sweetip-list">
+            <li class="edit"><span>Edit</span></li>
+            <li class="delete"><span>Delete</span></li>
+        </ul>
+    </div>
+
+    <!--Template for control the contact group-->
+    <div id="view_template_contactgroup_edit">
+        <ul class="sweetip-list">
+            <li class="delete"><span>Delete</span></li>
+        </ul>
+    </div>
+
+    <!--Template for search-->
+    <div id="view_template_search">
+        <ul class="sweetip-list checkmark">
+            <li data-id="current"><span>Current</span></li>
+            <li data-id="global"><span>Global</span></li>
+        </ul>
+    </div>
+
+    <!--Template for setting menu-->
+    <div id="view_template_settingmenu">
+        <ul class="sweetip-list">
+            <li><a href="#/settings" id="setting">Settings...</a></li>
+            <li class="separator"></li>
+            <li><a href="http://support.doit.im/home" target="_blank" id="feedback">Feedback</a></li>
+            <li><a href="javscript:;" class="hotkey-help">shortcut help</a></li>
+            <li class="separator"></li>
+            <li><a href="/signout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+<div id="position_wrap" class="position-wrap">
+    <div class="position-m"></div>
+</div>
+<div id="goodbye_earth"></div>
+<div class="positioning-wrap">
+<div class="positioning-x">
+    <div id="smartfolder_form" class="formbox">
+        <form>
+            <div class="formbox-head">
+				<ul class="smartbox-menu">
+					<li class="on">1.Add Filters</li>
+					<li>2.Add Name</li>
+					<li>3.Done</li>
+				</ul>
+            </div>
+            <div class="formbox-main-wrap"><!--????????-->
+                <div id="smartfolder_form_1"  class="formbox-main">
+                    <table border="0" class="smartfolder-t">
+                        <tr>
+                            <td class="half" colspan="3">
+                                <label class="label">Status:</label>
+                                <p id="smartfolder_state">
+                                    <input id="smartfolder_nocomp" data-id="uncompleted" type="checkbox" />
+                                    <label for="smartfolder_nocomp" class="check-label">Uncompleted</label>
+                                    <input id="smartfolder_comp" data-id="completed" type="checkbox" />
+                                    <label for="smartfolder_comp" class="check-label">Completed</label>
+                                </p>
+                            </td>
+                            <td class="half" colspan="3">
+                                <label class="label">Priority:</label>
+                                <p id="smartfolder_pri">
+                                    <input id="smartfolder_pri_0" type="checkbox" data-id="0" />
+                                    <label for="smartfolder_pri_0" class="check-label">None</label>
+                                    <input id="smartfolder_pri_1" type="checkbox" data-id="1" />
+                                    <label for="smartfolder_pri_1" class="check-label">Low</label>
+                                    <input id="smartfolder_pri_2" type="checkbox" data-id="2" />
+                                    <label for="smartfolder_pri_2" class="check-label">Medium</label>
+                                    <input id="smartfolder_pri_3" type="checkbox" data-id="3" />
+                                    <label for="smartfolder_pri_3" class="check-label">High</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                              <label class="label">Start time:</label>
+                                <div id="smartfolder_starttime" class="width-b select-box fl">
+                                  <div class="selected-text" data-id="none">None</div>
+                                    <ul>
+                                      <li data-id="none">None</li>
+                                      <li data-id="today">Today</li>
+                                          <li data-id="tomorrow">Tomorrow</li>
+                                          <li data-id="this_week">This week</li>
+                                          <li data-id="next_week">Next week</li>
+                                          <li data-id="this_workday">This workweek</li>
+                                          <li data-id="next_workday">Next workweek</li>
+                                          <li data-id="this_month">This month</li>
+                                          <li data-id="next_month">Next month</li>
+                                          <li data-id="mn" class="mn">Days from now</li>
+                                    </ul>
+                                </div>
+                                <div id="smartfolder_starttime_mn" class="fl" style="display:none">
+                                   <input type="text" class="text" value="" id="smartfolder_starttime_m" /> to <input type="text" class="text" value="" id="smartfolder_starttime_n" /> 
+                                </div>
+                            </td>
+                            <td colspan="3">
+                              <label class="label">Deadline:</label>
+                                <div id="smartfolder_deadline" class="width-b select-box fl">
+                                  <div class="selected-text" data-id="none">None</div>
+                                    <ul>
+                                      <li data-id="none">None</li>
+                                      <li data-id="today">Today</li>
+                                      <li data-id="tomorrow">Tomorrow</li>
+                                      <li data-id="this_week">This week</li>
+                                          <li data-id="next_week">Next week</li>
+                                          <li data-id="this_workday">This workweek</li>
+                                          <li data-id="next_workday">Next workweek</li>
+                                          <li data-id="this_month">This month</li>
+                                          <li data-id="next_month">Next month</li>
+                                          <li data-id="mn" class="mn">Days from now</li>
+                                    </ul>
+                                </div>
+                                <div id="smartfolder_deadline_mn" class="fl" style="display:none">
+                                   <input type="text" class="text" value="" id="smartfolder_deadline_m" /> to <input type="text" class="text" value="" id="smartfolder_deadline_n" /> 
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                              <label class="label">Context:</label>
+                                <div id="smartfolder_context_div" class="smartfolder-wrapdiv">
+                                    <input type="text" class="text" value="" readonly="readonly" id="smartfolder_context" />
+                                    <div class="smartfolder-drop" style="display:none">
+                                        <div class="smartfolder-dropmain">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2">
+                              <label class="label">Project:</label>
+                                <div id="smartfolder_project_div" class="smartfolder-wrapdiv">
+                                    <input type="text" class="text" value="" readonly="readonly" id="smartfolder_project" />
+                                    <div class="smartfolder-drop" style="display:none">
+                                        <div class="smartfolder-dropmain">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2">
+                              <label class="label">Tags:</label>
+                                <div id="smartfolder_tag_div" class="smartfolder-wrapdiv">
+                                    <input type="text" class="text" value="" readonly="readonly" id="smartfolder_tag" />
+                                    <div class="smartfolder-drop" style="display:none">
+                                        <div class="smartfolder-dropmain">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div id="smartfolder_fowardby_type" class="width-m select-box">
+                                  <div class="selected-text" data-id="in">Include</div>
+                                    <ul>
+                                      <li data-id="in">Include</li>
+                                      <li data-id="nin">Exclude</li>
+                                    </ul>
+                                </div>
+                                <label class="label">By:</label>
+                                <div id="smartfolder_forwardby_div">
+                                    <input type="text" class="text" value="" data-id="" id="smartfolder_forwardby" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div id="smartfolder_foward_type" class="width-m select-box">
+                                  <div class="selected-text" data-id="in">Include</div>
+                                    <ul>
+                                      <li data-id="in">Include</li>
+                                      <li data-id="nin">Exclude</li>
+                                    </ul>
+                                </div>
+                                <label class="label">To:</label>
+                                <div id="smartfolder_forward_div">
+                                    <input type="text" class="text" value="" data-id="" id="smartfolder_forward" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="half" colspan="3">
+                              <label class="label">Group by:</label>
+                                <div id="smartfolder_groupby" class="width-b select-box">
+                                  <div class="selected-text" data-id="none">None</div>
+                                    <ul>
+                                      <li data-id="none">None</li>
+                                      <li data-id="start_at">Start time</li>
+                                      <li data-id="end_at">Deadline</li>
+                                      <li data-id="priority">Priority</li>
+                                      <li data-id="project">Project</li>
+                                      <li data-id="context">Context</li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="half" colspan="3">
+                              <label class="label">Sort by:</label>
+                                <div id="smartfolder_sort" class="width-b select-box">
+                                  <div class="selected-text" data-id="start_at">Start time</div>
+                                    <ul>
+                                      <li data-id="start_at">Start time</li>
+                                      <li data-id="end_at">Deadline</li>
+                                      <li data-id="priority">Priority</li>
+                                    </ul>
+                                </div>
+                                <div id="smartfolder_sort_order" class="width-m select-box">
+                                  <div class="selected-text" data-id="asc">ASC</div>
+                                    <ul>
+                                      <li data-id="asc">ASC</li>
+                                    <li data-id="desc">DESC</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="smartfolder_form_2" class="formbox-main">
+                    <div class="smartfolder-choosed">
+                      <h5>Filters added:</h5>
+                        <p></p>
+                    </div>
+                    <div class="smartfolder-name">
+                      <h5>Box name:</h5>
+                        <input type="text" class="text" value="" id="smartfolder_name" />
+                        <span>*12 or fewer letters</span>
+                    </div>
+                </div>
+            </div>
+            <div class="formbox-foot">
+                <div class="btn-control" id="smartfolder_next">
+                  <div class="btn-control-icon btn-control-next">Next</div>
+                </div>
+                <div class="btn-control" id="smartfolder_cancel">
+                  <div class="btn-control-icon btn-control-cancel">Cancel</div>
+                </div>
+                <div class="btn-control" style="display:none" id="smartfolder_save">
+                  <div class="btn-control-icon btn-control-save">Save</div>
+                </div>
+                <div class="btn-control" id="smartfolder_prev" style="display:none">
+                  <div class="btn-control-icon btn-control-prev">Previous</div>
+                </div>
+                <div class="smartfolder-del" id="smartfolder_del" style="display:none">
+                  <span class="smartfolder-del-b">Delete it</span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="taskform" class="taskform">
+        <div class="taskform-head">
+          <div class="inner"><div class="taskform-autoc" style="display:none;"><label for="taskform_autoc"><input id="taskform_autoc" type="checkbox" checked />Auto-complete</label> <span class="autoc-tip">(<a title="The task in your box will be completed automatically when all the receivers complete it.">?</a>)</span></div><div class="taskform-btn"><a class="taskform-btn-cancel">Cancel</a><a class="taskform-btn-save disabled">Save</a></div><div class="taskform-title">Add Task</div></div>
+        </div>
+        <div class="taskform-main">
+            <form class="form" autocomplete="off">
+                <div class="task-meta">
+                    <ul class="task-meta-inner">
+                        <li class="meta task-title">
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Enter your task title...</div>
+                                    <input class="meta-input" type="text" spellcheck="true" maxlength="255" />
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none;"></span>
+                        </li>
+                        <li class="meta task-notes">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Description:...</div>
+                                    <textarea class="meta-input" type="text"></textarea>
+                                    <div class="textarea-tmp"></div>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                        </li>
+                        
+                        <li class="meta task-starttime">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">StartTime...</div>
+                                    <div class="box"></div>
+                                    <span class="timeside">(</span><input id="task_start_at" class="meta-input task-start-at datepicker text-time" readonly type="text" value=""/><span class="timeside">)</span>
+                                    <div class="popup" style="display:none;">
+                                        <div class="left">
+                                            <ul>
+                                              <li data-id="inbox">Inbox</li>
+                                              <li data-id="today">Today</li>
+                                              <li data-id="next">Next</li>
+                                              <li data-id="tomorrow">Tomorrow</li>
+                                              <li data-id="scheduled">Scheduled</li>
+                                              <li data-id="someday">Someday</li>
+                                              <li data-id="waiting">Waiting for</li>
+                                            </ul>
+                                            <div class="right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="taskform-allday"><label for="taskform_allday"><input id="taskform_allday" type="checkbox" checked />all-day</label></div>
+                            <span class="clear-this" style="display:none;"></span>
+                        </li>
+                        <li class="meta task-deadline">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Deadline...</div>
+                                    <input id="task_end_at" readonly class="meta-input task-end-at text-time datepicker" type="text" spellcheck="true" maxlength="255" />
+                                    <div class="popup"></div>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none;"></span>
+                        </li>
+                        <li class="meta task-project smart">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Project...</div>
+                                    <input class="meta-input" style="display:none" type="text" spellcheck="true" maxlength="30" />
+                                    <ul class="token-items">
+                                        <li class="input-li" style="width:23px;">
+                                            <input class="autocomp-input" type="text" spellcheck="true" maxlength="30" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                        </li>
+                        <li class="meta task-context smart">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Context...</div>
+                                    <input class="meta-input" style="display:none" type="text" spellcheck="true" maxlength="30" />
+                                    <ul class="token-items">
+                                        <li class="input-li" style="width:23px;">
+                                            <input class="autocomp-input" type="text" spellcheck="true" maxlength="30" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                        </li>
+                        <li class="meta task-priority ">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <input type="text" class="meta-input" data-id="0" value="None" readonly />
+                                    <div class="popup" style="display:none;">
+                                        <ul>
+                                          <li data-id="0">None</li>
+                                          <li data-id="1">Low</li>
+                                          <li data-id="2">Medium</li>
+                                          <li data-id="3">High</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none;"></span>
+                        </li>
+                        <li class="meta task-tags smart">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Tags...</div>
+                                    <input class="meta-input" style="display:none" type="text" spellcheck="true" maxlength="20" />
+                                    <ul class="token-items">
+                                        <li class="input-li" style="width:23px;">
+                                            <input class="autocomp-input" type="text" spellcheck="true" maxlength="20" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                            </li>
+                            <li class="meta task-repeat toggle">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Repeat...</div>
+                                    <input class="meta-input" value="" readonly type="text" />
+                                    <div class="popup" style="display:none;">
+                                        <div class="repeat-tab">
+                                          <label for="repeat_type">Mode:</label>
+                                            <select class="type">
+                                              <option data-id="repeat_daily" value="daily">Daily</option>
+                                              <option data-id="repeat_weekly" value="weekly">Weekly</option>
+                                              <option data-id="repeat_weekday" value="weekday">Weekday</option>
+                                              <option data-id="repeat_monthly" value="monthly">Monthly</option>
+                                              <option data-id="repeat_yearly" value="yearly">Yearly</option>
+                                            </select>
+                                        </div>
+                                        <dl id="repeat_daily" class="clearfix repeat-section">
+                                          <dt><label for="task_tag_repeat_daily" class="label">Frequency:</label></dt>
+                    <dd class="task-freq">
+                    <span>Every</span>
+                        <input name="task_tag_repeat_daily" class="repeat-cycle text" value="1" />
+                        <span>day(s)</span>
+                    </dd>
+                    <dt>Period:</dt>
+                    <dd class="task-repeat-time-box">
+                    <span class="repeat_start_at text text-time"></span>
+                        <span>-</span>
+                        <input type="text" name="repeat_time_end" class="repeat_end_at text  datepicker" value="EndTime" />
+                    </dd>
+                </dl>
+                <dl id="repeat_weekly" class="clearfix repeat-section" style="display:none">
+                  <dt><label for="task_tag_repeat_weekly" class="label">Frequency:</label></dt>
+                    <dd class="task-freq">
+                    <span>Every</span>
+                        <input name="task_tag_repeat_weekly" class="repeat-cycle text" value="1" />
+                        <span>week(s)</span>
+                    </dd>
+                    <dt>Repeats on:</dt>
+                    <dd class="task-repeat-box">
+                    <div class="checkbox" data-id="1"><input name="repeat-monday" type="hidden" value="" />Mon</div>
+                        <div class="checkbox" data-id="2"><input name="repeat-tuesday" type="hidden" value=""/>Tue</div>
+                        <div class="checkbox" data-id="3"><input name="repeat-wednesday" type="hidden" value="" />Wed</div>
+                        <div class="checkbox" data-id="4"><input name="repeat-thursday" type="hidden" value="" />Thu</div>
+                        <div class="checkbox" data-id="5"><input name="repeat-friday" type="hidden" value="" />Fri</div>
+                        <div class="checkbox" data-id="6"><input name="repeat-saturday" type="hidden" value="" />Sat</div>
+                        <div class="checkbox last" data-id="0"><input name="repeat-sunday" type="hidden" value="" />Sun</div>
+                    </dd>
+                    <dt>Period:</dt>
+                    <dd class="task-repeat-time-box">
+                        <span class="repeat_start_at text text-time"></span>
+                        <span>-</span>
+                        <input type="text" name="repeat_time_end" class="repeat_end_at text  datepicker" value="EndTime" />
+                    </dd>
+                </dl>
+                <dl id="repeat_weekday" class="clearfix repeat-section" style="display:none">
+                  <dt>Repeats on:</dt>
+                    <dd class="task-repeat-box">
+                    <div class="disabled checkbox" data-id="1"><input name="repeat-monday" type="hidden" value="on" />Mon</div>
+                        <div class="disabled checkbox" data-id="2"><input name="repeat-tuesday" type="hidden" value="on" />Tue</div>
+                        <div class="disabled checkbox" data-id="3"><input name="repeat-wednesday" type="hidden" value="on" />Wed</div>
+                        <div class="disabled checkbox" data-id="4"><input name="repeat-thursday" type="hidden" value="on" />Thu</div>
+                        <div class="disabled checkbox" data-id="5"><input name="repeat-friday" type="hidden" value="on" />Fri</div>
+                        <div class="disabled checkbox" data-id="6"><input name="repeat-saturday" type="hidden" value="" />Sat</div>
+                        <div class="disabled checkbox last" data-id="0"><input name="repeat-sunday" type="hidden" value="" />Sun</div>
+                    </dd>
+                    <dt>Period:</dt>
+                    <dd class="task-repeat-time-box">
+                        <span class="repeat_start_at text text-time"></span>
+                        <span>-</span>
+                        <input type="text" name="repeat_time_end" class="repeat_end_at text  datepicker" value="EndTime" />
+                    </dd>
+                </dl>
+                <dl id="repeat_monthly" class="clearfix repeat-section" style="display:none">
+                  <dt><label for="task_tag_repeat_monthly" class="label">Frequency:</label></dt>
+                    <dd class="task-freq">
+                    <span>Every</span>
+                        <input name="task_tag_repeat_monthly" value="1" class=" repeat-cycle text" />
+                        <span>month(s)</span>
+                    </dd>
+                    <dt><label for="task_tag" class="label">Repeats on:</label></dt>
+                    <dd class="repeat-on"><label for="repeat_monthly_day"><input type="radio" checked name="repeat_monthly_type" id="repeat_monthly_day">Day</label>
+                        <span class="select">
+                            <select class="repeat-monthly-type">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </span>
+                        
+                    <label for="repeat_monthly_date"><input type="radio" name="repeat_monthly_type" id="repeat_monthly_date"></label>
+                        <span class="select">
+                            <select class="repeat-monthly-o" disabled>
+                              <option value="1">The first</option>
+                                  <option value="2">The second</option>
+                                  <option value="3">The third</option>
+                                  <option value="4">The fourth</option>
+                                  <option value="-1">The last</option>
+                            </select>
+                            <select class="repeat-monthly-w" disabled>
+                              <option value="1">Mon</option>
+                              <option value="2">Tue</option>
+                              <option value="3">Wed</option>
+                              <option value="4">Thu</option>
+                              <option value="5">Fri</option>
+                              <option value="6">Sat</option>
+                              <option value="0">Sun</option>
+                            </select>
+                        </span>
+                        </dd>
+                        <dt>Period:</dt>
+                    <dd class="task-repeat-time-box">
+                        <span class="repeat_start_at text text-time"></span>
+                        <span>-</span>
+                        <input type="text" name="repeat_time_end" class="repeat_end_at text  datepicker" value="EndTime" />
+                    </dd>
+                </dl>
+                <dl id="repeat_yearly" class="clearfix repeat-section" style="display:none">
+                  <dt><label for="task_tag_repeat_yearly" class="label">Frequency:</label></dt>
+                    <dd class="task-freq">
+                    <span>Every</span>
+                        <input name="task_tag_repeat_yearly" class="repeat-cycle text" value="1" />
+                        <span>year(s)</span>
+                    </dd>
+                    <dt>Period:</dt>
+                    <dd class="task-repeat-time-box">
+                        <span class="repeat_start_at text text-time"></span>
+                        <span>-</span>
+                        <input type="text" name="repeat_time_end" class="repeat_end_at text  datepicker" value="EndTime" />
+                    </dd>
+                </dl>
+                <div class="repeat-ok"><div class="inner">Ok</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                            </li>
+                        <li class="meta task-reminder toggle">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Reminders...</div>
+                                    <input class="meta-input" readonly type="text" />
+                                    <!--<div class="reminders"></div>-->
+                                    <div class="popup">
+                                        <ul>
+                                            <li data-type="relative">
+                                                <select class="type">
+                                                  <option value="popup">Popup</option>
+                                                  <option value="email">Email</option>
+                                                </select>
+                                                <input type="text" value="10" class="reminder text" />
+                                                <select class="unit">
+                                                  <option value="min" class="relative">minutes</option>
+                                                  <option value="hour" class="relative">hours</option>
+                                                  <option value="day" class="relative">days</option>
+                                                  <option value="ondate" class="absolute">on date</option>
+                                                </select>
+                                                <input style="display:none;" type="text" readonly class="datepicker nlinput" />
+                                                <div class="add">+</div>
+                                            </li>
+                                        </ul>
+                                        <div class="button unset"><div class="inner">Unset</div></div>
+                                        <div class="button ok"><div class="inner">Ok</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                        </li>
+                        <li class="meta task-assign smart toggle">
+                            <s class="icon"></s>
+                            <div class="meta-wrap">
+                                <div class="meta-inner">
+                                  <div class="meta-default-text">Assign to...</div>
+                                    <input class="meta-input" style="display:none" type="text" spellcheck="true" maxlength="255" />                <ul class="token-items">
+                                        <li class="input-li" style="width:23px;">
+                                            <input class="autocomp-input" type="text" spellcheck="true" maxlength="255" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="clear-this" style="display:none"></span>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="taskform-foot"><a>+ Add repeat,reminders and assignment</a></div>
+    </div>
+    <div id="web_setting_page"></div>
+    <div id="confirm_dialog_empty_trash"></div>
+</div>
+</div>
+<div id="tips2"><ul></ul></div>
+<div id="data_loading" style="display:none"></div>
+<div id="rocket"></div>
+<script src="/public/js/lib/jquery.js?1331436586000"></script>
+<script src="/public/js/lang/en.js?1331436586000"></script>
+<script src="/public/js/lib/doit.3.js?1331436586000"></script>
+<!--[if lt IE 7]>
+<script src="/public/js/warning.js?1331436586000"></script>
+<![endif]-->
+<script type="text/javascript">
+Do.cookie('gmt', -1 * (new Date()).getTimezoneOffset()/60,{expires: 365, path: '/'} );
+Doit.lastVersion = new Date("2012/03/06 12:00 +0800");
+Doit.userTimezone = "1.0";
+//sun.util.calendar.ZoneInfo[id=&quot;GMT+01:00&quot;,offset=3600000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+</script>
+<script src="/public/js/i/v3/doit.function.js?1331436586000"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10875992-1']);
+  _gaq.push(['_setDomainName', '.doit.im']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>

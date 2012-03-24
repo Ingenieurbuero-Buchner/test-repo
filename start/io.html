@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html> 
+<html lang="en" class="init_mode info_mode "  data-env="production" manifest="/cache.manifest"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
+    
+    <!-- Google Chrome Frame for the rescue -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    
+    <title> 
+      minutes.io &mdash; the best meeting tool since pen &amp; paper*
+    </title> 
+    
+    <meta name="description" content="Take notes while conversing with others and share them right away!" /> 
+    
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png" /> 
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"> 
+    
+    <script type="text/javascript" charset="utf-8">
+    var user_agent = window.navigator.userAgent,
+        browser_class = '';
+    // some do not have a user_agent? Probably Crawlers?
+    switch (true) {
+      case !!user_agent.match(/like mac os x/i):
+        browser_class = 'ios';
+        break;
+      case !!user_agent.match(/webkit/i):
+      case !!user_agent.match(/chromeframe/i):
+        browser_class = 'webkit';
+        break;
+      case !!user_agent.match(/opera/i):
+        browser_class = 'opera';
+        break;
+      case !!user_agent.match(/msie/i):
+      
+        version = user_agent.match(/msie (\d)/i).pop();
+        old_ie  = parseInt(version) < 9 ? ' old_ie' : '';
+        fu_ie   = parseInt(version) < 8 ? ' fu_ie'  : '';
+        browser_class = ['ie ','ie',version,old_ie, fu_ie].join('');
+        break;
+      case !!user_agent.match(/mozilla/i):
+        browser_class = 'firefox';
+        break;
+    }
+    document.documentElement.className += " " + browser_class;
+    </script>
+ 
+        
+                    <link rel="stylesheet" href="stylesheets/all.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="stylesheets/print.css" type="text/css" media="print" />
+      <!--[if lt IE 9 ]>
+      <script type="text/javascript">
+      (function(){
+        var html5elmeents = "address|article|aside|audio|canvas|command|datalist|details|dialog|figure|figcaption|footer|h|header|hgroup|keygen|mark|meter|menu|nav|progress|ruby|section|time|video".split('|');
+        for(var i = 0; i < html5elmeents.length; i++){
+  				document.createElement(html5elmeents[i]);
+  			}
+  		})();
+      </script>
+    <![endif]-->
+  </head> 
+ 
+  <body> 
+    <div id="promo"> 
+      <div id="canvas"> 
+        <div class="inner"> 
+          <hgroup>
+            <h1><a href="/" title="home">minutes.io</a></h1>
+            <h2>
+              <a href="#the-best-meeting-tool-since-pen-and-paper" title="* many people say so :-)">the best meeting tool since pen &amp; paper <span>*</span></a>
+            </h2>
+          </hgroup>
+          
+          <div class="intro signed_out"> 
+            
+            
+            <h3> 
+              Take notes &amp; share
+              them right away
+            </h3> 
+      
+            <h4> 
+              No sign up. Just essence.
+            </h4> 
+      
+            <p class="start">
+              
+              <a href="#" class="awesome start button">Start using minutes.io</a> 
+              or <a href="#" class="sign_in button">Sign In</a>
+            </p>
+          </div><!-- /.intro -->
+          
+          <div class="intro signed_in"> 
+            
+            
+            <h3> 
+              Welcome Back!
+            </h3> 
+      
+            <h4> 
+              You're signed in as<br />
+              <strong><span class="signed_in_as"></span></strong>
+            </h4> 
+      
+            <p class="start">
+              <a href="#" class="awesome start button">enter minutes.io</a>
+              or <a href="#" class="sign_out button">Sign Out</a>
+            </p>
+          </div><!-- /.intro --> 
+    
+          <div class="sheet meeting hidden"> 
+            <form action="" method="get"> 
+              <div class="meta"> 
+                <p> 
+                  <label class="inlined"><span>Project</span></label>
+                  <input type="text" name="project" value="" class="project unobtrusive" /> 
+                </p> 
+                <h1> 
+                  <label class="inlined"><span>Meeting Title</span></label>
+                  <input type="text" name="subject" value="" class="subject unobtrusive" /> 
+                </h1> 
+                <p> 
+                  <input type="text" name="held_at" value="" class="held_at unobtrusive" /> 
+                  |
+                  
+                  <span class="ib">
+                    <label class="inlined"><span>Where</span></label>
+                    <input type="text"  id="meeting_place" name="place" value="" class="place unobtrusive"/>
+                  </span>
+                </p> 
+ 
+                <table cellpadding="0" cellspacing="0" class="nice"> 
+                  <tr> 
+                    <th>Minute taker</th> 
+                    <td> 
+                      <label class="inlined"><span>your name and email address</span></label>
+                      <input type="text" value="" class="minute_taker unobtrusive" autocomplete="off" style="min-width: 40px; width: 40px; ">
+                    </td> 
+                  </tr> 
+ 
+                  <tr> 
+                    <th>Attendees</th> 
+                    <td> 
+                      <label class="inlined"><span>names and email addresses</span></label>
+                      <textarea type="text" value="" name="attendees" class="unobtrusive" autocomplete="off"></textarea>
+                    </td> 
+                  </tr> 
+                </table><!-- /people --> 
+ 
+                <div class="logo"> 
+                  <img src="/images/minutes.io-logo.png" alt="" />
+                </div><!-- /.logo --> 
+              </div><!-- /header --> 
+            </form> 
+          </div><!-- /.meeting --> 
+        </div><!-- /.inner --> 
+      </div><!-- /canvas --> 
+ 
+      <div id="main" role="main"> 
+        <div class="inner"> 
+          <div class="first"> 
+            <section id="welcome"> 
+              <h3><strong>Minute your meetings.</strong> The easy way.</h3> 
+ 
+              <p>Have you ever faced the situation of agreeing on decisions and task assignments in a meeting and it takes days before the minutes are written and sent to everyone—if they ever are? </p> 
+              <p>Ever got a quick customer call, whose outcome should be traced and shared?</p> 
+              <p>minutes.io just does that. In an elegant and simple manner. You can use it in your browser, but you don’t need to be connected to the Internet. You don’t need to sign up. And it’s free! </p> 
+            </section> 
+      
+            <section id="features"> 
+              <section> 
+                <article class="typing"> 
+                  <div><h4>Fast Typing</h4>            
+                  <p>minutes.io has been designed to let you take  notes  during your meetings, not after. Keyboard navigation, smart data entry, tablet friendly.</p></div> 
+                </article> 
+ 
+                <article class="storage"> 
+                  <div><h4>Local  Storage</h4> 
+                  <p>Internet  connectivity is not always there in customers’ meeting room or on the go. Not a problem! Your meetings are saved in your browser, waiting to be sent when you’re online again.</p></div> 
+                </article> 
+ 
+                <article class="publish"> 
+                  <div><h4>Instant Publish</h4> 
+                  <p>In addition to emailing the minutes on your behalf, minutes.io publishes them using secret URLs, making it easy to access them from anywhere.</p></div> 
+                </article> 
+              </section> 
+ 
+              <section> 
+                <article class="sending"> 
+                  <div><h4>Custom Summaries</h4> 
+                  <p>Receive a personalized email with your todos easily grouped for you.<em>Coming Soon</em></p></div> 
+                </article> 
+ 
+                <!-- <article class="attachements">
+                  <div><h4>File Attachment</h4>
+                  <p>
+                    Upload and share any type of files with the  attendees and other recipients of your meeting minutes.
+                    <em>Coming Soon</em>
+                  </p></div>
+                </article> --> 
+ 
+                <article class="integrations"> 
+                  <div><h4>Integrate in your environment</h4> 
+                  <p> 
+                    Finish your meeting by pushing your todos and notes to your own project-management-tool.
+                    <em>Coming Soon</em> 
+                  </p></div> 
+                </article> 
+ 
+                <article class="white-label"> 
+                  <div><h4>White Label</h4> 
+                  <p> 
+                    Corporate use? Apply your own logos and  manage your users with our Business edition.
+                    <em>Coming Soon</em> 
+                  </p></div> 
+                </article> 
+              </section> 
+            </section><!-- /features --> 
+          </div><!-- /.first --> 
+    
+          <div class="second"> 
+            <!-- <section id="screencast"> 
+              <a href="http://www.screenr.com/3STs">Screencast</a> 
+            </section>  -->
+      
+            <section id="testomonials"> 
+              <article> 
+                <blockquote> 
+                  <p>“Elegant!”</p> 
+                </blockquote> 
+                <p>—<strong>Ouriel Ohayon</strong> <br /> 
+                  AppsFire </p> 
+              </article> 
+ 
+              <article> 
+                <blockquote> 
+                  <p>“You have taken something boring <br /> 
+                  and made me excited about it!”</p> 
+                </blockquote> 
+                <p>—<strong>Brady Jensen</strong><br /> 
+                Account Specialist, Jive</p> 
+              </article> 
+ 
+              <article> 
+                <blockquote> 
+                  <p>“Ca peut devenir un nouveau doodle.<br /> 
+                  Bravo!”</p> 
+                </blockquote> 
+                <p>—<strong>Alain Garnier</strong><br /> 
+                CEO, Jamespot.com</p> 
+              </article> 
+ 
+              <article> 
+                <blockquote> 
+                  <p>“Web service of my dreams. <br /> 
+                  Wonderful execution on all levels.”</p> 
+                </blockquote> 
+                <p>—<strong>Simon Rohrbach</strong><br /> 
+                Founder, Serious</p> 
+              </article> 
+            </section><!-- /testomonials --> 
+          </div><!-- /.second --> 
+        </div><!-- /.inner --> 
+  
+  
+        <section id="press"> 
+          <div class="inner"> 
+            <dl> 
+              <dt class="current lifehacker"><a href="http://lifehacker.com/5808214/minutesio-is-a-super-simple-web-app-for-creating-and-sharing-meeting-minutes">lifehacker</a></dt> 
+              <dd>“A wonderfully simple way to perform a task that's usually very boring and painstaking”</dd> 
+              <dt class="bnet"><a href="http://www.bnet.com/blog/businesstips/take-organized-actionable-meeting-minutes-with-this-simple-online-tool/11495">bnet</a></dt> 
+              <dd>“Take Organized, Actionable Meeting Minutes with This Simple Online Tool”</dd> 
+              <dt class="readwriteweb"><a href="http://www.readwriteweb.com/biz/2011/05/take-meeting-minutes-from-your-tablet-or-laptop.php">readwriteweb</a></dt> 
+              <dd>“Take meeting minutes online and easily share them with others”</dd> 
+              <dt class="tnw"><a href="http://thenextweb.com/apps/2011/05/18/minutes-io-an-elegant-web-app-to-minute-meetings/">tnw</a></dt> 
+              <dd>“This app really is child’s play”</dd> 
+              <dt class="smallbiz"><a href="http://www.marioarmstrong.com/2011/05/18/record-and-share-meeting-minutes-online-with-minutes-io/">smallbizgomobile</a></dt> 
+              <dd>“Make recording minutes painless and sharing minutes instant”</dd> 
+              <dt class="descary"><a href="http://descary.com/minutes-io-un-service-web-de-compte-rendu-de-reunion/">descary</a></dt> 
+              <dd>“Un service Web de compte-rendu de reunion”</dd> 
+              <dt class="ph"><a href="http://chronicle.com/blogs/profhacker/make-meetings-more-useful-with-minutes-io/33840">ProfHacker</a></dt> 
+              <dd>“Make Meetings More Useful”</dd> 
+            </dl> 
+          </div><!-- /.inner --> 
+        </section> 
+  
+        <footer> 
+          <div class="inner"> 
+            <p> 
+              <a href="http://blog.minutes.io">Blog</a> · <a href="http://twitter.com/minutes_io">Twitter</a> · <a href="http://facebook.com/minutes.io">Facebook</a> · <a href="/docs/TOS-minutes.io.pdf">Terms of Service</a> · <a href="/docs/Privacy-minutes.io.pdf">Privacy</a> 
+            </p> 
+            <p class="copy"> 
+              All right reserved ©2011 minutes.io
+            </p>  
+      
+            <p id="the-best-meeting-tool-since-pen-and-paper"> 
+               <a href="http://twitter.com/minutes_io/favorites" title="the best meeting tool since pen &amp; paper">*many people say so :-)</a> 
+            </p> 
+          </div><!-- /.inner --> 
+        </footer> 
+      </div><!-- /main --> 
+ 
+      <footer> 
+        <div class="inner"> 
+          <p> 
+            <a href="#" class="awesome">Click here to start</a> 
+            <span class="free-hint">it's free!</span> 
+          </p> 
+    
+          <div class="meeting sheet"> 
+      
+          </div><!-- /.sheet --> 
+        </div><!-- /.inner --> 
+      </footer> 
+ 
+      <section id="video-overlay"> 
+      </section> 
+    </div><!-- /.static --> 
+    
+    <div id="app"> 
+      <div id="view"> 
+ 
+      </div><!-- /view --> 
+      
+      <div id="action-bar"></div><!-- /action-bar -->
+      
+      <div id="meta"></div><!-- /meta -->
+ 
+      <div id="offline-bar" class="info-bar">
+        <p>
+          <strong>
+            You are working offline. <span class="dirty-note"></span>
+          </strong>
+        </p>
+      </div><!-- /offline-bar.info-bar -->
+      
+      <!-- proxy for mailto:links --> 
+      <iframe scr="about:blank;" id="proxy" class="hide"></iframe>  
+ 
+      <!-- templates -->
+          
+        <script type="text/template" id="tpl-account-bar"> 
+        <header>
+  <% if (current_profile().is_authenticated()) { %>
+  <div class="reauthorize">
+    <b>!</b>
+    
+    <div class="options">
+      <ul>
+        <li class="sign_in">
+          <strong>Authentication error.</strong>
+          Please sign in again
+        </li>
+      </ul>
+    </div>
+  </div>
+  <% } %>
+  
+  <div class="account">
+    <span><%= current_profile().account_name() %></span>
+    
+    <div class="options">
+      <ul>
+        <% if (current_profile().is_anonymous()) { %>
+        <li class="save">
+          <strong>Sign Up</strong>
+          Save this account to access it from other devices
+        </li>
+        <!-- <li class="sign_in">
+          <strong>Sign In</strong>
+          Sign In to an existing account and optionally move meetings
+        </li> -->
+        <li class="destroy">
+          <strong>Delete</strong>
+          Destroy all data of this account
+        </li>
+        <% } else { %>
+        <li class="sign_out">
+          <strong>Sign Out</strong>
+          Clears all local data
+        </li>
+        <li class="change_password">
+          <strong>Change Password</strong>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div><!-- /.account -->
+  
+  <div class="support" id="intercom-widget">
+    <span>Support</span>
+  </div><!-- /.support -->
+</header>
+        </script>
+          
+        <script type="text/template" id="tpl-account-change_password"> 
+        <div class="overlay">
+  <div class="inner" >
+ 
+    <div class="change_password">
+      <form action="change_password">
+        <p class="password_current">
+          <strong>Current Password</strong>
+          <span>
+            <label class="inlined"><span>????????</span></label>
+            <input type="password" value="" name="password_current" />
+          </span>
+          <br />
+        
+        </p>
+        
+        <p class="password">
+          <strong>New Password</strong>
+          <span>
+            <label class="inlined"><span>????????</span></label>
+            <input type="password" value="" name="password" />
+          </span>
+        </p>
+      
+        <p class="password_confirmation">
+          <strong>Confirm</strong>
+          <span>
+            <label class="inlined persistent"><span>????????</span></label>
+            <input type="password" value="" name="password_confirmation" />
+          </span>
+        </p>
+        <p>
+          <button class="awesome large change_password">change password</button>
+          <a href="#" class="cancel">cancel</a>
+        </p>
+      </form>
+    </div><!-- /.sign_in -->
+      
+  </div><!-- /.inner -->
+</div><!-- /.overlay -->
+        </script>
+          
+        <script type="text/template" id="tpl-account-sign_in"> 
+        <div class="overlay">
+  <div class="inner" >
+ 
+    <div class="sign_in">
+      <form action="sign_in">
+        <p class="email">
+          <% if (current_profile().email()) {%>
+            <strong><%= current_profile().email() %></strong>
+            <input type="hidden" value="<%= current_profile().email() %>" name="email" />
+            <a href="#" class="sign_out">Sign Out</a>
+          <% } else { %>
+            <strong>E-Mail </strong>
+            <span>
+              <label class="inlined"><span>name@example.com</span></label>
+              <input type="email" value="" name="email" autocorrect="off" autocapitalize="off" />
+            </span>
+          <% } %>
+        </p>
+      
+        <p class="password">
+          <strong>Password</strong>
+          <span>
+            <label class="inlined"><span>????????</span></label>
+            <input type="password" value="" name="password" />
+          </span>
+          <br />
+        </p>
+        <p>
+          <button class="awesome large sign_in">Sign In</button>
+          <a href="#" class="cancel">cancel</a>
+          <a href="mailto:feedback@minutes.io?subject=%5Bminutes.io%5D%20forgot%20password&body=I%20forgot%20my%20password,%20please%20send%20me%20a%20new%20one." class="forgot_password">forgot password</a>
+        </p>
+      </form>
+    </div><!-- /.sign_in -->
+      
+  </div><!-- /.inner -->
+</div><!-- /.overlay -->
+        </script>
+          
+        <script type="text/template" id="tpl-account-sign_up"> 
+        <div class="overlay">
+  <div class="inner" >
+    
+    <div class="sign_up">
+      <form action="sign_up">
+        <p class="email">
+          <strong>E-Mail </strong>
+          <span>
+            <label class="inlined"><span>name@example.com</span></label>
+            <input type="email" value="" name="email" autocorrect="off" autocapitalize="off" />
+          </span>
+        </p>
+      
+        <p class="password">
+          <strong>Password</strong>
+          <span>
+            <label class="inlined"><span>????????</span></label>
+            <input type="password" value="" name="password" />
+          </span>
+        </p>
+      
+        <p class="password_confirmation">
+          <strong>Confirm</strong>
+          <span>
+            <label class="inlined persistent"><span>????????</span></label>
+            <input type="password" value="" name="password_confirmation" />
+          </span>
+        </p>
+        
+        <p class="name">
+          <strong>What’s your name? </strong>
+          <span>
+            <label class="inlined persistent"><span>&nbsp;</span></label>
+            <input type="text" value="<%= current_profile().email() || current_profile().settings().minute_taker().email() %>" name="name" />
+          </span>
+        </p>
+        <p>
+          <button class="awesome large sign_up">save</button>
+          <a href="#" class="cancel">cancel</a>
+        </p>
+      </form>
+    </div><!-- /.sign_up -->
+      
+  </div><!-- /.inner -->
+</div><!-- /.overlay -->
+        </script>
+          
+        <script type="text/template" id="tpl-cache_manifest"> 
+        CACHE MANIFEST
+FALLBACK:
+/new /
+/Meeting /
+/shared /
+NETWORK:
+http://*
+https://*
+*
+CACHE:
+# html 
+/
+# js & css
+/javascripts/app.js
+/javascripts/vendor.js
+stylesheets/all.css
+stylesheets/print.css
+stylesheets/screen.css
+/stylesheets/images/ui-bg_flat_0_aaaaaa_40x100.png
+/stylesheets/images/ui-bg_flat_75_ffffff_40x100.png
+/stylesheets/images/ui-bg_glass_55_fbf9ee_1x400.png
+/stylesheets/images/ui-bg_glass_65_ffffff_1x400.png
+/stylesheets/images/ui-bg_glass_75_dadada_1x400.png
+/stylesheets/images/ui-bg_glass_75_e6e6e6_1x400.png
+/stylesheets/images/ui-bg_glass_95_fef1ec_1x400.png
+/stylesheets/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+/stylesheets/images/ui-icons_2e83ff_256x240.png
+/stylesheets/images/ui-icons_222222_256x240.png
+/stylesheets/images/ui-icons_454545_256x240.png
+/stylesheets/images/ui-icons_888888_256x240.png
+/stylesheets/images/ui-icons_cd0a0a_256x240.png
+# images
+images/minutes.io-logo.png
+/images/apple-touch-icon.png
+/images/arrow_select_white.png
+/images/favicon.png
+/images/hint_arrow.png
+/images/pattern.jpg
+/images/sheet_corner.png
+/images/stamp_overlay.png
+/images/static.sprite.png
+/images/lock.png
+# 115-15ddbbf8b63595ec569726ef4dfa0244
+        </script>
+          
+        <script type="text/template" id="tpl-mailer-meeting"> 
+        Hey there,
+ 
+Please find the minutes of our meeting on this page
+<%= model.shared_path() %>
+ 
+Thank you
+ 
+- <%= model.minute_taker().name() %>
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-_attendees"> 
+        <label class="inlined"><span>names and email addresses</span></label>
+<textarea type="text" id="meeting_attendees" value="" name="attendees" class="unobtrusive"><%= view.access_proxy().attendees_raw() %></textarea>
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-_GMAIL_link"> 
+        https://mail.google.com/mail?view=cm&tf=0&to=<%= model.to() %>&su=<%= model.subject() %>&cc=<%= model.cc() %>&bcc=<%= model.bcc() %>&body=<%= model.body() %>
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-_mailto_link"> 
+        mailto:<%= model.to() %>?subject=<%= model.subject() %>&body=<%= model.body() %>&cc=<%= model.cc() %>&bcc=<%= model.bcc() %>
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-_minute_taker"> 
+        <label class="inlined"><span>your name and email address</span></label>
+<input type="text" id="meeting_minute_taker" name="minute_taker" value="<%= view.access_proxy().minute_taker_raw() %>" class="minute_taker unobtrusive" />
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-_others"> 
+        <label class="inlined"><span>names and email addresses</span></label>
+<textarea type="text" id="meeting_others" value="" name="others" class="unobtrusive"><%= view.access_proxy().others_raw() %></textarea>
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-edit"> 
+        <div class="sheet-container">
+  <div class="meeting edit sheet">
+    <% if (model.is_filed()) { %>
+    <div class="stamp filed" data-rotate="<%= helpers.random_stamp_rotate( model.filed_at() ) %>">
+      FILED
+      <small>
+        <%= model.filed_at() %>
+      </small>
+    </div>
+    <% } %>
+    <form action="" method="get">
+      <div class="meta">
+        <p id="project">
+          <label class="inlined"><span>Project</span></label>
+          <input type="text" id="meeting_project" name="project" value="<%= model.project() %>" class="project unobtrusive"/>
+        </p>  
+        <h1>
+          <label class="inlined"><span>Meeting Title</span></label>
+          <input type="text" id="meeting_subject" name="subject" value="<%= model.subject() %>" class="subject unobtrusive" />
+        </h1>
+        <p id="held">
+          <input type="text" id="meeting_held_at" name="held_at" value="<%= model.held_at() %>" class="held_at unobtrusive" />
+          | 
+          <span class="ib">
+            <label class="inlined"><span>Where</span></label>
+            <input type="text"  id="meeting_place" name="place" value="<%= model.place() %>" class="place unobtrusive"/>
+          </span>
+        </p>
+        <table id="people" cellpadding="0" cellspacing="0" class="nice">
+          <tr id="minute_taker">
+            <th><span><span>Minute taker</span></span></th>
+            <td>
+            </td>
+          </tr>
+          <tr id="attendees">
+            <th><span><span>Attendees</span></span></th>
+            <td>
+            </td>
+          </tr>
+          <tr id="others" <%= model.others().length ? '' : 'class="hide"' %>>
+            <th><span><span>Others (CC)</span></span></th>
+            <td>
+            </td>
+          </tr>
+          <tr id="description" <%= model.description().length ? '' : 'class="hide"' %>>
+            <th><span><span>About this meeting</span></span></th>
+            <td>
+              <label class="inlined"><span>Description</span></label>
+              <textarea id="meeting_description" name="description" class="description unobtrusive"><%= model.description() %></textarea>
+            </td>
+          </tr>
+        </table><!-- /people -->
+        <div class="options">
+          <% if (! model.others().length) { %>
+            <a href="#others"  class="toggle others" tabindex="9999">others (CC)</a>
+          <% } %>
+          <% if (! model.description()) { %>
+            &nbsp;
+            <a href="#description"  class="toggle description" tabindex="9999">About this meeting</a>
+          <% } %>
+        </div>
+        <div class="logo">
+          <img src="images/minutes.io-logo.png" alt="" />
+        </div><!-- /.logo -->
+      </div><!-- /header -->
+      <div class="content">
+      </div><!-- /content -->
+      <div id="footer">
+        <div>
+          <div>
+            <ul class="back">
+              <li class="back button" title="back to meetings"></li>
+            </ul>
+            <ul class="actions">
+              <li class="save button" title="save">
+                <% if (model.is_filed()) { %>
+                  save
+                <% } else { %>
+                  file
+                <% } %>
+              </li>
+              <li class="delete button" title="delete">delete</li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /footer -->
+    </form>
+  </div><!-- /meeting -->
+</div><!-- /sheet-container -->
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-index"> 
+        <div class="meetings-container">
+  <div id="meetings">
+    <div class="title">
+      <h1>My Meetings</h1>
+    </div>
+ 
+    <div class="content">
+      <div class="actions">
+        <a href="/new/Meeting" class="awesome new button">new Meeting</a>
+      </div>
+    
+      <div class="meeting-list">
+        <p class="fetching">
+          loading ...
+        </p>
+        <ul>
+        <% collection.each( function(meeting) { %>
+          <li id="<%= meeting.html_id() %>" class="<%= meeting.state() %>">
+            <!-- <a href="#" class="destroy" data-id="<%= meeting.id %>">d</a> -->
+            
+            <a href="<%= meeting.is_shared() ? '/shared/'+meeting.shared_id() : meeting.path() %>">
+            <span class="project"><%= meeting.project() %></span>
+          
+            <span class="subject">
+              <% if (meeting.state() != 'filed') { %>
+                <span class="icon <%= meeting.state() %>">e</span>
+              <% } %>
+              
+              <%= meeting.subject_or_fallback() %>
+              
+              <% if (meeting.state() != 'filed') { %>
+                <small><%= meeting.state() %></small>
+              <% } %>
+              
+            </span>
+          
+            <span class="held"><%= meeting.held( App.current_profile().settings().date_time_format() ) %></span>
+          
+            <dl>
+              <dt>attendees</dt>
+              <dd><%= [meeting.minute_taker().name()].concat(meeting.attendees().map(function(user){ return user.name() })).join(', ') %></dd>
+            </dl>
+            </a>
+          </li>
+        <% }); %>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="footer">
+      <div>
+        <div>
+          <ul class="back">
+            <li class="home button" title="goto minutes.io"></li>
+          </ul>
+          <ul class="actions">
+            <li class="new button">new Meeting</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /footer -->
+  </div><!-- /meetings -->
+</div><!-- /.sheet-container -->
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-send"> 
+        <div class="sheet-container">
+  <div id="meeting_mail_preview" class="sheet">
+    <form action="" method="get">
+      <div id="header" class="meta">
+        <h1>Mail Preview</h1>
+        <table cellpadding="0" cellspacing="0" class="nice">
+          <tr>
+            <th>FROM</th>
+            <td>
+              <label class="inlined"><span>your name and email address</span></label>
+              <textarea type="text" id="mail_from" value="" class="unobtrusive"><%= model.access().minute_taker().name_with_email() %></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>TO</th>
+            <td>
+              <label class="inlined"><span>names and email addresses</span></label>
+              <textarea type="text" id="mail_to" value="" class="unobtrusive"><%= model.access().attendees().names_with_email() %></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>CC</th>
+            <td>
+              <label class="inlined"><span>names and email addresses</span></label>
+              <textarea type="text" id="mail_cc" value="" class="unobtrusive"><%= model.access().others().names_with_email() %></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>BCC</th>
+            <td>
+              <label class="inlined"><span>names and email addresses</span></label>
+              <textarea type="text" id="mail_bcc" value="" class="unobtrusive"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>subject</th>
+            <td>
+              <label class="inlined"><span>subject</span></label>
+              <input type="text" id="mail_subject" value="[minutes.io] <%= model.name_with_project() %>" class="unobtrusive" />
+            </td>
+          </tr>
+        </table><!-- /people -->
+      </div><!-- /header -->
+      <div class="content">
+        <p>
+          <textarea class="unobtrusive" id="mail_body"><%= body() %></textarea>
+        </p>
+      </div><!-- /content -->
+      <div id="footer">
+        <div>
+          <div>
+            <ul class="back">
+              <li class="back button" title="back"></li>
+            </ul>
+            <ul class="actions">
+              <li class="mail button" data-engine="mailto">send</li>
+              <li class="mail button" data-engine="GMAIL">send with GMAIL</li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /footer -->
+    </form>
+  </div><!-- /meeting_mail_preview -->
+</div>
+        </script>
+          
+        <script type="text/template" id="tpl-meetings-show"> 
+        <% if (model.is_shared() && !model.is_persistent() && !model.belongs_to(current_profile())) { %>
+  <div class="info-bar" id="subscribe-bar">
+    <p>
+      This meeting has been shared by <%= model.minute_taker().name() || '<em>unknown</em>' %>.
+      <a href="#" class="subscribe">Subscribe</a> to store it
+      <% if (current_profile().is_authenticated()) { %>
+        in your account (<%= current_profile().email() %>)
+      <% } else { %>
+        in your unsaved account.
+      <% } %>
+    </p>
+  </div>
+<% } %>
+<div class="sheet-container">
+  <div class="meeting <%= model.state() %> sheet">
+    
+    <% if (model.is_filed()) {%>
+    <div class="stamp filed" data-rotate="<%= helpers.random_stamp_rotate( model.filed_at() ) %>">
+      FILED
+      <small>
+        <%= model.filed_at() %>
+      </small>
+    </div>
+    <% } %>
+    <form action="" method="get">
+      <div id="header" class="meta">
+        <p id="company">
+          <%= model.project() || "&nbsp;" %>
+        </p>  
+        <h1>
+          <%= model.subject() %>
+        </h1>
+        <p id="held">
+          <%= model.held() %>
+        </p>
+        <table id="people" cellpadding="0" cellspacing="0" class="nice">
+          <tr id="minute_taker">
+            <th><span><span>Minute taker</span></span></th>
+            <td>
+              <%= model.minute_taker().name_with_initials() %>
+            </td>
+          </tr>
+          <tr id="attendees">
+            <th><span><span>Attendees</span></span></th>
+            <td>
+              <%= model.attendees().map(function(user){return user.name_with_initials()}).join(', ') %>
+            </td>
+          </tr>
+          <tr id="others"  <%= model.others().length ? '' : 'class="hide"' %>>
+            <th><span><span>Others (CC)</span></span></th>
+            <td>
+              <%= model.others().map(function(user){return user.name_with_initials()}).join(', ') %>
+            </td>
+          </tr>
+          <tr id="description"  <%= model.description().length ? '' : 'class="hide"' %>>
+            <th><span><span>About this meeting</span></span></th>
+            <td>
+              <%= model.description_html() %>
+            </td>
+          </tr>
+        </table><!-- /people -->
+        <!-- hack for equal whitespacing to edit -->
+        <div class="options">
+          &nbsp;
+        </div>
+        <div class="logo">
+          <img src="/images/minutes.io-logo.png" alt="" />
+        </div><!-- /.logo -->
+      </div><!-- /header -->
+      <div class="content">
+      </div><!-- /content -->
+      
+      <div id="footer">
+        <div>
+          <div>
+            <ul class="back">
+              <li class="back button" title="back to Meetings"></li>
+            </ul>
+          
+            <ul class="actions">
+              <% if (model.belongs_to(current_profile())) { %>
+                <li class="edit button" title="edit">edit</li>
+                <li class="send button online-only" title="send (preview)">send</li>
+              <% } %>
+            
+              <li class="print button"  title="print"><i>p</i> print</li>
+            
+              <% if (model.belongs_to(current_profile())) { %>
+                <li class="delete button" title="delete">delete</li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /footer -->
+    </form>
+  </div><!-- /meeting -->
+</div><!-- /sheet-container -->
+        </script>
+          
+        <script type="text/template" id="tpl-minutes-edit"> 
+        <td class="keyword">
+  <span>
+    <label class="inlined persistent"><span>Topic</span></label>
+    <textarea autocorrect="off" spellcheck="false" id="<%= model.html_id() %>_keyword" class="unobtrusive" name="keyword" ><%= model.keyword() %></textarea>
+  </span>
+</td>
+<td class="kind">
+  <select id="<%= model.html_id() %>_kind" class="<%= model.kind() %>" name="kind">
+  <% _.each( model.constructor.kinds, function(kind) { %>
+  <option class="<%= kind %>" value="<%= kind %>" <%= model.kind() == kind ? 'selected="selected"' : '' %>><%= kind.toUpperCase() %></option>
+  <% }); %>
+  </select>
+</td>
+<td class="note">  
+  <span>
+    <label class="inlined"><span>Note</span></label>
+    <textarea id="<%= model.html_id() %>_note" class="unobtrusive"name="note" ><%= model.note() %></textarea>
+  </span>
+</td>
+<td class="responsible">
+  <span>
+    <label class="inlined"><span>Initials</span></label>
+    <input type="text" id="<%= model.html_id() %>_initials" name="responsible" value="<%= model.responsible() %>" class="unobtrusive" />
+  </span>
+</td>
+<td class="due_at">
+  <span>
+    <label class="inlined"><span>Date</span></label>
+    <input type="text" id="<%= model.html_id() %>_due" class="unobtrusive" name="due_at" value="<%= model.due_at() %>" />
+    <a href="#" class="icon">c</a>
+  </span>
+</td>
+<td class="action">
+  <span>
+    <b class="destroy_minute icon" data-id="<%= model.id %>">x</b>
+  </span>
+</td>
+        </script>
+          
+        <script type="text/template" id="tpl-minutes-index"> 
+        <% if (minutes.length > 0) { %>
+<div id="minutes">
+  <table cellpadding="0" cellspacing="0" class="nice <% if (minutes.has_groups()) { %>has-groups<% } %> <% if (! minutes.use_kind()) { %>no-kinds<% } %> <% if (! minutes.use_note()) { %>no-notes<% } %>">
+    <thead>
+      <tr>
+        <th class="keyword">
+          Topic
+        </th>
+        <% if (minutes.use_kind()) { %>
+        <th class="kind">
+          Type
+        </th>
+        <% } %>
+        <% if (minutes.use_note()) { %>
+        <th class="note">
+          <%= minutes.note_label() %>
+        </th>
+        <% } %>
+        <% if (minutes.use_owner()) { %>
+        <th class="responsible">
+          Owner
+        </th>
+        <% } %>
+        <% if (minutes.use_due_at()) { %>
+        <th class="due_at">
+          Due
+        </th>        
+        <% } %>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div><!-- /minutes -->
+<% } %>
+        </script>
+          
+        <script type="text/template" id="tpl-minutes-index_edit"> 
+        <div id="minutes">
+  <table cellpadding="0" cellspacing="0" class="nice">
+    <thead>
+      <tr>
+        <th class="keyword">
+          Subject
+        </th>
+        <th class="kind">
+          Type
+        </th>
+        <th class="note">
+          Note
+        </th>
+        <th class="responsible">
+          Owner
+        </th>
+        <th class="due_at">
+          Due
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div class="help calendar">
+    <i class="cmd">navigate</i><i class="os_mac">?</i><i class="os_win">ctrl</i> + arrow keys<br />
+    <i class="cmd">prev/next month</i>page up/down<br />
+    <i class="cmd">accept</i> enter<br />
+    <i class="cmd">abort</i> escape
+  </div>
+  <div class="help navigate">
+    <span class="short">
+      use <i class="os_mac">?</i><i class="os_win">ctrl</i>
+    </span>
+    <span class="long">
+      <i class="cmd">jump</i><i class="os_mac">?</i><i class="os_win">ctrl</i> + arrow keys<br />
+      <i class="cmd">move</i><i class="os_mac">?</i><i class="os_win">ctrl</i> + shift + up/down<br />
+      <i class="cmd">insert</i><i class="os_mac">?</i><i class="os_win">ctrl</i> + enter (+ shift)<br />
+      <i class="cmd">delete</i><i class="os_mac">?</i><i class="os_win">ctrl</i> + shift + backspace
+    </span>
+  </div>
+</div><!-- /minutes -->
+        </script>
+          
+        <script type="text/template" id="tpl-minutes-show"> 
+        <% if (model.has_same_keyword_as_prev() || model.keyword() == '') { %>
+<td class="nr">
+  <% if (model.collection.use_keywords()) {%>
+    <%= model.group_nr %>.<%= model.minute_nr %>
+  <% } else { %>
+    <%= 1 + model.minute_nr %>.
+  <% } %>
+</td>
+<% } else { %>
+<td class="keyword">
+  <%= model.group_nr %>. <%= model.keyword_with_br() %>
+</td>
+<% } %>
+<% if (model.collection.use_kind()) { %>
+<td class="kind <%= model.kind().toLowerCase() %>"><%= model.kind() || '&nbsp;' %></td>
+<% } %>
+<% if (model.collection.use_note()) { %>
+<td class="note">
+  <%= model.note_with_br() %>
+</td>
+<% } %>
+<% if (model.collection.use_owner()) { %>
+<td class="responsible"><%= model.owner() || '&nbsp;'  %></td>
+<% } %>
+<% if (model.collection.use_due_at()) { %>
+<td class="due_at"><%= model.due_at() || '&nbsp;'  %></td>
+<% } %>
+        </script>
+      </div> <!-- /app -->
+    
+    <div id="overlay-container"> 
+    </div><!-- /overlay-container -->
+    
+        
+              <script src="/javascripts/vendor.js" type="text/javascript"></script>     
+        <script src="/javascripts/app.js" type="text/javascript"></script>
+        
+        <!--[if lt IE 8 ]>
+          <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+          <script src="/javascripts/old_ie.js" type="text/javascript"></script>
+          <script>
+            $.chromeframebar({
+              icons_path: '/vendor/chromeframeiebar/'
+            });
+          </script>
+        <![endif]-->
+        
+</html>
+      </body> 

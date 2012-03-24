@@ -1,0 +1,574 @@
+/*
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Scrumwise website style sheet
+//
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+html {
+    /* Always show scroll bar, to avoid layout shifts */
+    overflow-y: scroll;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #fcfcfc url(images/Background.png) repeat-x;
+}
+
+a:active {
+    outline: none
+}
+
+:focus {
+    -moz-outline-style: none
+}
+
+#outer-box1 {
+    width: 1020px;
+    margin: auto
+}
+
+#outer-box2 {
+    width: 980px;
+    margin: auto
+}
+
+#wide-outer-box1 {
+    width: 1070px;
+    margin: auto
+}
+
+#wide-outer-box2 {
+    width: 1050px;
+    margin: auto
+}
+
+#header-box {
+    position: relative;
+    height: 100px
+}
+
+#wide-header-box {
+    position: relative;
+    height: 100px;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+#logo {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+}
+
+#login-button {
+    position: absolute;
+    right: 0px;
+    top: 20px;
+}
+
+#content-box {
+    position: relative;
+}
+
+#heading-box {
+    display: block;
+    background: url(images/Heading.png) no-repeat;
+    width: 773px;
+    height: 170px;
+    margin: 0 auto;
+    text-indent: -8000px;
+
+}
+#smiley {
+    position: absolute;
+    left: 778px;
+    top: 93px;
+}
+
+#screenshots {
+    display: block;
+    width: 917px;
+    height: 416px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#take-a-look-button {
+    position: absolute;
+    right: 0px;
+    top: 342px;
+}
+
+#bottom-heading-box {
+    display: block;
+    background: url(/images/BottomHeading.png) no-repeat;
+    width: 797px;
+    height: 90px;
+    margin: 0 auto;
+    text-indent: -8000px;
+}
+
+#twitter-follow {
+    position: absolute;
+    left: 460px;
+    top: 753px;
+}
+
+#bottom-padding {
+    display: block;
+    height: 117px;
+}
+
+#top-home-link {
+    position: absolute;
+    left: 465px;
+    top: 18px;
+}
+
+/*
+#top-try-link {
+    position: absolute;
+    left: 486px;
+    top: 18px;
+}
+*/
+
+#top-pricing-link {
+    position: absolute;
+    left: 544px;
+    top: 18px;
+}
+
+#top-faq-link {
+    position: absolute;
+    left: 631px;
+    top: 18px;
+}
+
+#top-status-link {
+    position: absolute;
+    left: 698px;
+    top: 18px;
+}
+
+#top-about-link {
+    position: absolute;
+    left: 782px;
+    top: 18px;
+}
+
+#form-box {
+    display: block;
+    margin-left: 140px;
+    margin-right: 180px;
+    margin-top: 22px;
+    margin-bottom: 50px;
+}
+
+#pricing-heading {
+    display: block;
+    background: url(images/PricingHeading.png) no-repeat;
+    width: 196px;
+    height: 86px;
+    margin-left: 120px;
+    margin-top: 10px;
+    text-indent: -8000px;
+}
+
+#pricing-content-box1 {
+    margin-left: 140px;
+    margin-right: 340px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+#pricing-note {
+    position: absolute;
+    left: 275px;
+    top: 144px;
+}
+
+#pricing-content-box2 {
+    margin-left: 140px;
+    margin-right: 340px;
+    margin-top: 280px;
+    margin-bottom: 40px;
+}
+
+.pricing-text {
+    line-height: 1.4;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #333333;
+    margin-top: 0px;
+}
+
+div.pricing-text a:link {
+    color: #60ADF4;
+}
+
+div.pricing-text a:visited {
+    color: #60ADF4;
+}
+
+div.pricing-text a:hover {
+    color: #60ADF4;
+    text-decoration: underline;
+}
+
+div.pricing-text a:active {
+    color: #1081EA;
+}
+
+p.pricing-paragraph + p.pricing-paragraph {
+    margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+#faq-heading {
+    display: block;
+    background: url(´images/FAQHeading.png) no-repeat;
+    width: 659px;
+    height: 86px;
+    margin-left: 120px;
+    margin-top: 10px;
+    text-indent: -8000px;
+}
+
+#faq-note {
+    position: absolute;
+    left: 616px;
+    top: 159px;
+}
+
+#faq-content-box {
+    margin-left: 140px;
+    margin-right: 340px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.faq-overview-section-box {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div.faq-overview-section-box + div.faq-overview-section-box {
+    margin-top: 30px;
+}
+
+.faq-overview-section-heading {
+    font-size: 19pt;
+    font-weight: normal;
+    color: #95c3f7;
+    margin-bottom: 6px;
+}
+
+div.faq-overview-section-heading a:link {
+    color: #95c3f7;
+}
+
+div.faq-overview-section-heading a:visited {
+    color: #95c3f7;
+}
+
+div.faq-overview-section-heading a:hover {
+    color: #95c3f7;
+    text-decoration: underline;
+}
+
+div.faq-overview-section-heading a:active {
+    color: #6AAEF4;
+}
+
+.faq-overview-question-list {
+    list-style-position: outside;
+    padding-left: 19pt;
+}
+
+.faq-overview-question {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #444444;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+li.faq-overview-question a:link {
+    color: #444444;
+}
+
+li.faq-overview-question a:visited {
+    color: #444444;
+}
+
+li.faq-overview-question a:hover {
+    color: #444444;
+    text-decoration: underline;    
+}
+
+li.faq-overview-question a:active {
+    color: #222222;
+}
+
+li.faq-overview-question + li.faq-overview-question {
+    margin-top: 6px;
+}
+
+.faq-answer-section-box {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div.faq-overview-section-box + div.faq-answer-section-box {
+    margin-top: 70px;    
+}
+
+div.faq-answer-section-box + div.faq-answer-section-box {
+    margin-top: 55px;
+}
+
+.faq-answer-section-heading {
+    font-size: 22pt;
+    font-weight: normal;
+    color: #95c3f7;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #444444;
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+.faq-answer {
+    line-height: 1.4;
+    font-size: 11pt;
+    font-weight: normal;
+    color: #333333;
+    margin-top: 0px;
+}
+
+div.faq-answer a:link {
+    color: #60ADF4;
+}
+
+div.faq-answer a:visited {
+    color: #60ADF4;
+}
+
+div.faq-answer a:hover {
+    color: #60ADF4;
+    text-decoration: underline;
+}
+
+div.faq-answer a:active {
+    color: #1081EA;
+}
+
+div.faq-answer + div.faq-question {
+    margin-top: 32px;
+}
+
+p.faq-paragraph + p.faq-paragraph {
+    margin-top: 12px;
+    margin-bottom: 0px;    
+}
+
+#about-heading {
+    display: block;
+    background: url(images/AboutUsHeading.png) no-repeat;
+    width: 250px;
+    height: 86px;
+    margin-left: 120px;
+    margin-top: 10px;
+    text-indent: -8000px;
+}
+
+#about-note {
+    position: absolute;
+    left: 678px;
+    top: 38px;
+}
+
+#about-content-box {
+    margin-left: 140px;
+    margin-right: 340px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.about-text {
+    line-height: 1.4;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #333333;
+    margin-top: 0px;
+}
+
+div.about-text a:link {
+    color: #60ADF4;
+}
+
+div.about-text a:visited {
+    color: #60ADF4;
+}
+
+div.about-text a:hover {
+    color: #60ADF4;
+    text-decoration: underline;
+}
+
+div.about-text a:active {
+    color: #1081EA;
+}
+
+p.about-paragraph + p.about-paragraph {
+    margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+#terms-heading {
+    display: block;
+    background: url(images/TermsHeading.png) no-repeat;
+    width: 178px;
+    height: 90px;
+    margin-left: 125px;
+    margin-top: 6px;
+    text-indent: -8000px;
+}
+
+#terms-content-box {
+    margin-left: 140px;
+    margin-right: 340px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.terms-intro {
+    line-height: 1.4;
+    font-size: 11pt;
+    font-weight: normal;
+    color: #333333;
+    margin-top: 0px;
+}
+
+.terms-address {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 40px;
+}
+
+.terms-section-heading {
+    font-size: 22pt;
+    font-weight: normal;
+    color: #95c3f7;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.terms-section-body {
+    line-height: 1.4;
+    font-size: 11pt;
+    font-weight: normal;
+    color: #333333;
+    margin-top: 0px;
+}
+
+div.terms-intro + div.terms-section-heading {
+    margin-top: 50px;
+}
+
+div.terms-section-body + div.terms-section-heading {
+    margin-top: 50px;
+}
+
+p.terms-paragraph + p.terms-paragraph {
+    margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+div#terms-content-box a:link {
+    color: #60ADF4;
+}
+
+div#terms-content-box a:visited {
+    color: #60ADF4;
+}
+
+div#terms-content-box a:hover {
+    color: #60ADF4;
+    text-decoration: underline;
+}
+
+div#terms-content-box a:active {
+    color: #1081EA;
+}
+
+#error-general-heading {
+    display: block;
+    background: url(/images/ErrorGeneralHeading.png) no-repeat;
+    width: 597px;
+    height: 90px;
+    margin-left: 137px;
+    margin-top: 6px;
+    text-indent: -8000px;
+}
+
+#error-page-not-found-heading {
+    display: block;
+    background: url(/images/ErrorPageNotFoundHeading.png) no-repeat;
+    width: 381px;
+    height: 90px;
+    margin-left: 135px;
+    margin-top: 6px;
+    text-indent: -8000px;
+}
+
+#error-content-box {
+    margin-left: 140px;
+    margin-right: 340px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.error-text {
+    line-height: 1.4;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #333333;
+    margin-top: 0px;
+}
+
+div.error-text a:link {
+    color: #60ADF4;
+}
+
+div.error-text a:visited {
+    color: #60ADF4;
+}
+
+div.error-text a:hover {
+    color: #60ADF4;
+    text-decoration: underline;
+}
+
+div.error-text a:active {
+    color: #1081EA;
+}
